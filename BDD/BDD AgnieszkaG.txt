@@ -1,0 +1,45 @@
+Feature: Wypłacenie środków z konta klienta
+# przypadek pozytywny
+Scenario: Na koncie jest wystarczająca kwota
+    Given Manager jest zalogowany do systemu
+	And jest na stronie Withdrawal
+	And na koncie klienta jest kwota 100
+    When w polu Account No manager wpisze konto klienta
+	And w polu Amount kwotę 100
+	And w polu Description opis przelewu
+	And naciśnie przycisk Submit
+    Then z konta zostanie pobrana kwota 100
+	And zostanie wyświetlone ID transakcji
+
+# przypadek negatywny
+Scenario: Na koncie jest zbyt mało środków
+    Given Manager jest zalogowany do systemu
+	And jest na stronie Withdrawal
+	And na koncie klienta jest kwota 100
+    When w polu Account No manager wpisze konto klienta
+	And w polu Amount kwotę 2100
+	And w polu Description opis przelewu
+	And naciśnie przycisk Submit
+    Then pojawi się komunikat Transaction Failed. Account Balance Low!!!
+
+# przypadek negatywny
+	Scenario: Brak wpisanych numerów kont
+    Given Manager jest zalogowany do systemu
+	And jest na stronie Withdrawal
+	And na koncie klienta jest kwota 100
+	And pole numeru konta jest puste
+	And w polu Amount kwotę 50
+	And w polu Description opis przelewu
+	When naciśnie przycisk Submit
+    Then pojawi się komunikat Please fill all fields
+	
+# przypadek negatywny
+Scenario: Błędny numer konta
+    Given Manager jest zalogowany do systemu
+	And jest na stronie Withdrawal
+	And na koncie klienta jest kwota 100
+    When w polu Account No manager wpisze błędny numer konta
+	And w polu Amount kwotę 100
+	And w polu Description opis przelewu
+	And naciśnie przycisk Submit
+    Then pojawi się komunikat Account does not exist
