@@ -1,2 +1,9 @@
 # Kurs-testerki-SDA
-Mój kurs testerski z SDA, tutaj będę trzymać efekty mojej pracy podczas szkolenia
+Stronę Guru99 przetestowałam w ramach projektu końcowego kursu w SDA. 
+
+W projekcie wykonałam testy eksploracyjne, w celu przetestowwania głównych funkcjonalności strony. 
+
+Podczas pracy korzystałam z narzędzi tj. Jira, Testrail, Chrome DevTools, Selenium IDE oraz Postman.
+
+Zapraszam :) 
+
