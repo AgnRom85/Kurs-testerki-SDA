@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S1</id>
+	<name>Master</name>
+	<description></description>
+	<sections>
+		<section>
+		<name>Sesja eksploracyjna oraz przypadki testowe</name>
+		<description>Sesja eksploracyjna oraz stworzone na jej podstawie przypadki testowe</description>
+						<cases>
+												<case>
+				<id>C1</id>
+				<title>Sesja eksploracyjna #1</title>
+												<template>Exploratory Session</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<mission>Testujemy aplikacje eksploracyjnie GURU99 Bank https://demo.guru99.com/V4/index.php 
+
+Projekt Guru99 Bank ma na celu zapewnienie swoim klientom bankowości internetowej.
+Ta wersja będzie miała ograniczone funkcje. Z biegiem czasu, nowe i nowe funkcje będą dodawane do strony.</mission>
+										<goals>-&amp;gt;ogólnie czy strona jest czytelna (wyglad strony, scrollowanie), literowki
+-&amp;gt; devtools - bledy konsoli
+-&amp;gt;devtools - lihhthouse
+-&amp;gt; założenie konta managera
+-&amp;gt; założenie klientowa
+-&amp;gt; dodanie konta klientowi
+-&amp;gt;przelew miedzy kontami 2 klientow
+-&amp;gt; logowanie klienta
+-&amp;gt; widok panelu klienta
+
+Defekty (znalezione problemy)
+W tworzeniu klienta w polu date of birth można wpisać datę przyszłą
+Błędy w consoli w devtools przy logowaniu do istniejacego konta
+W tworzeniu klienta w polu hasło może zawierać 1 znak.
+Test wydajnosciowy aplikacji webowej (sceen)
+W tworzeniu klienta pole numer telefonu powinien być unikalny 
+Przy tworzeniu nowego klienta i błędnej walidacji, system nie wskazuje które pole należy uzupełnić
+Przy tworzeniu nowego klienta i kliknieciu przycisku Submit nic się nie dzieje (zwrócic uwage na pole customer name)
+Obsługa błędów w formularzu
+Przelew na kwoty równe i mniejsza niż 0
+Nie działa sekcja &quot;Mini statement&quot;
+Nie działa sekcja &quot;Customized statement&quot;
+Nie działa sekcja &quot;Balance Inquiry&quot;
+Brak wyszukiwania oraz listy klientów
+
+Zagadnienia (niejasności, wątpliwości)
+System nie powinien pozwalać ustawić daty w przyszłości
+sceen - liczne błędy konsoli
+W specyfikacji brak wymagań do pola hasło
+sceen
+Numer telefonu powinien być unikalny i przypisany tylko do 1 klienta
+Pojawia się tylko komunikat &quot;please fill all fields&quot;. Powinno być jasno wskazane które pole należy uzupełnić
+brak z precyzowanych informacji jaki ma byc customer name (musi to byc imie i nazwisko)
+Jeśli wystąpi jakiś błąd w formularzu to po walidacji wszystkie pola są czyszczone co nie jest przyjazne dla użytkownika. Po wyświetleniu błędu użytkownik powinien móc wrócić do edycji
+System pozwala na przelewy w kwocie równej i mniejszej niż 0
+Po wpisaniu poprawnego konta i wciśnięciu &quot;Submit&quot; wyswietla się pusta strona (404 w konsoli)
+Po wpisaniu poprawnego konta i wciśnięciu &quot;Submit&quot; wyswietla się pusta strona (404 w konsoli)
+Po wpisaniu poprawnego konta i wciśnięciu &quot;Submit&quot; wyswietla się pusta strona (500 w konsoli)
+W systemie nie ma możliwości wyszukania i wyświetlenia danych konkretnego klienta
+
+
+
+
+</goals>
+									</custom>
+							</case>
+															<case>
+				<id>C15</id>
+				<title>Stworzenie nowego klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case [C4])</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;New customer&quot;</content><expected>Wyświetla się ekran &quot;Add New customer&quot; wraz z formularzem do wypełnienia danych</expected></step>
+<step>
+<index>3</index><content>W polu &quot;Customer Name&quot; wpisz imię oraz opcjonalnie nazwisko klienta. 
+
+
+Maksymalna liczba znak&amp;oacute;w: 25
+</content><expected>Dane wpisane w polu &quot;Customer Name&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Gender&quot; wybierz płeć klienta. Domyślnie zaznaczona jest opcja &quot;male&quot;</content><expected>Radiobutton zaznaczony zgodnie z wyborem użytkownika.</expected></step>
+<step>
+<index>5</index><content>W polu &quot;Date of birth&quot; wpisz lub wybierz z kalendarza datę urodzenia klienta. 
+Format daty: DD.MM.RRRR</content><expected>Data urodzenia jest wpisana i zwalidowana.</expected></step>
+<step>
+<index>6</index><content>W polu &quot;Address&quot; wpisz adres klienta. 
+
+Maksymalna liczba znak&amp;oacute;w: 50</content><expected>Dane wpisane w polu &quot;Address&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>7</index><content>W polu &quot;City&quot; wpisz miasto klienta. 
+
+Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;City&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>8</index><content>W polu &quot;State&quot; wpisz miasto klienta. 
+
+Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;State&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>9</index><content>W polu &quot;PIN&quot; wpisz kod PIN. 
+
+Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr</content><expected>Dane wpisane w polu &quot;PIN&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>10</index><content>W polu &quot;Mobile number&quot; wpisz numer telefonu klienta. 
+
+Maksymalna liczba znak&amp;oacute;w: 15</content><expected>Dane wpisane w polu &quot;Phone number&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>11</index><content>W polu email ID wpisz adres email (w formacie tekst@nazwadomeny.roszerzenie
+Maksymalna liczba znak&amp;oacute;w: 30. </content><expected>Adres email zwalidowany poprawnie</expected></step>
+<step>
+<index>12</index><content>W polu &quot;Password&quot; wpisz hasło do panelu klienta. Podczas sesji eksploracyjnej ustalono, że w polu hasło mogą znajdować się znaki specjalne, cyfry oraz spacja. 
+
+Maksymalna liczba znak&amp;oacute;w: 15
+</content><expected>Dane wpisyane w polu &quot;Password&quot; są zamaskowane.</expected></step>
+<step>
+<index>13</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się ekran z potwierdzeniem rejestracji klienta oraz wpisanymi wcześniej danymi (opr&amp;oacute;cz hasła). </expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C17</id>
+				<title>Edycja istniejącego klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case [C4]) oraz istnieje przypisany do niego klient
+
+Client ID: 40889
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;Edit customer&quot;</content><expected>Wyświetla się ekran &quot;Edit Customer Form&quot; wraz z formularzem do wpisania ID klienta</expected></step>
+<step>
+<index>3</index><content>Pole &quot;Customer Name&quot; nie jest edytowalne
+</content><expected>Dane wpisane w polu &quot;Customer Name&quot; są tylko do odczytu</expected></step>
+<step>
+<index>4</index><content>Pole &quot;Gender&quot; nie jest edytowalne</content><expected>Dane wpisane w polu &quot;Gender&quot; są tylko do odczytu</expected></step>
+<step>
+<index>5</index><content>Pole &quot;Date of birth&quot; nie jest edytowalne</content><expected>Dane wpisane w polu &quot;Date of brith&quot; są tylko do odczytu</expected></step>
+<step>
+<index>6</index><content>Dane w polu &quot;Address&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;Address&quot; wpisz adres klienta. 
+Maksymalna liczba znak&amp;oacute;w: 50</content><expected>Dane wpisane w polu &quot;Address&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>7</index><content>Dane w polu &quot;City&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;City&quot; wpisz adres klienta. 
+Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;City&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>8</index><content>Dane w polu &quot;State&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;State&quot; wpisz adres klienta. 
+Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;State&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>9</index><content>Dane w polu &quot;PIN&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;PIN&quot; wpisz adres klienta. 
+
+Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr</content><expected>Dane wpisane w polu &quot;PIN&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>10</index><content>Dane w polu &quot;Mobile number&quot; są edytowalne. 
+Aby zmienić numer telefonu W polu &quot;Mobile number&quot; wpisz telefon klienta. 
+
+Maksymalna liczba znak&amp;oacute;w: 15</content><expected>Dane wpisane w polu &quot;Phone number&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>11</index><content>Dane w polu &quot;E-mail&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;E-mail&quot; adres email (w formacie tekst@nazwadomeny.roszerzenie)
+
+ Maksymalna liczba znak&amp;oacute;w: 30.</content><expected>Dane wpisane w polu &quot;Email&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>12</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się pop-up z informacją &quot;Changes made to Customer records&quot;</expected></step>
+<step>
+<index>13</index><content>Opcjonalnie, na pop-upie z potwierdzeniem zmiany danych wciśnik &quot;OK&quot; lub odczekaj około 10 sekund</content><expected>Wyświetla się ekran &quot;Edit Customer Form&quot; wraz z formularzem do wpisania ID klienta</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C16</id>
+				<title>Dodanie konta managera</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik posiada zarejestrowany adres email</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W sekcji &quot;Steps To Generate Access&quot; kliknij &quot;here&quot;
+</content><expected>Strona Guru99 Bank z możliwością dodania usera wyświetla się poprawnie</expected></step>
+<step>
+<index>3</index><content>W polu email ID wpisz adres email (w formacie tekst@nazwadomeny.roszerzenie)</content><expected>Adres email zwalidowany poprawnie</expected></step>
+<step>
+<index>4</index><content>Kliknij &quot;Submit&quot;</content><expected>Jeśli adres email jest poprawny, wyświetlą się dane służące do logowania do konta administratora oraz informacja jak długo konto będzie ważne.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>Rejstracja klienta oraz kont klienta</name>
+		<description>Przypadki testowe powiązane z rejestracją konta klienta, depozytami i innymi operacjami</description>
+						<cases>
+												<case>
+				<id>C5</id>
+				<title>Stworzenie nowego klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case [C4])</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;New customer&quot;</content><expected>Wyświetla się ekran &quot;Add New customer&quot; wraz z formularzem do wypełnienia danych</expected></step>
+<step>
+<index>3</index><content>W polu &quot;Customer Name&quot; wpisz imię oraz opcjonalnie nazwisko klienta. 
+
+W tym polu nie są dozwolone cyfry, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. 
+
+
+</content><expected>Dane wpisane w polu &quot;Customer Name&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Gender&quot; wybierz płeć klienta. Domyślnie zaznaczona jest opcja &quot;male&quot;</content><expected>Radiobutton zaznaczony zgodnie z wyborem użytkownika.</expected></step>
+<step>
+<index>5</index><content>W polu &quot;Date of birth&quot; wpisz lub wybierz z kalendarza datę urodzenia klienta. 
+Format daty: DD.MM.RRRR</content><expected>Data urodzenia jest wpisana i zwalidowana.</expected></step>
+<step>
+<index>6</index><content>W polu &quot;Address&quot; wpisz adres klienta. 
+
+W tym polu nie są dozwolone znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;Address&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>7</index><content>W polu &quot;City&quot; wpisz miasto klienta. 
+
+W tym polu nie są dozwolone znaki specjalne oraz cyfry. Pole to nie może być puste oraz zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;City&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>8</index><content>W polu &quot;State&quot; wpisz miasto klienta. 
+
+W tym polu nie są dozwolone znaki specjalne oraz cyfry. Pole to nie może być puste oraz zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;State&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>9</index><content>W polu &quot;PIN&quot; wpisz kod PIN. 
+
+W tym polu nie są dozwolone litery oraz znaki specjalne. Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr oraz nie może zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;PIN&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>10</index><content>W polu &quot;Mobile number&quot; wpisz numer telefonu klienta. 
+
+W tym polu nie są dozwolone litery oraz znaki specjalne. Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr oraz nie może zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;Phone number&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>11</index><content>W polu &quot;E-mail&quot; wpisz poprawny adres email (w formacie tekst@nazwadomeny.roszerzenie)
+
+Pole to nie może być puste, zawierać spacji oraz adres email musi być poprawny. Zgodnie ze specyfikacją (F33) pole email musi być unikalne.</content><expected>Dane wpisane w polu &quot;Email&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>12</index><content>W polu &quot;Password&quot; wpisz hasło do panelu klienta. Podczas sesji eksploracyjnej ustalono, że w polu hasło mogą znajdować się znaki specjalne, cyfry oraz spacja. 
+
+
+</content><expected>Dane wpisyane w polu &quot;Password&quot; są zamaskowane.</expected></step>
+<step>
+<index>13</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się ekran z potwierdzeniem rejestracji klienta oraz wpisanymi wcześniej danymi (opr&amp;oacute;cz hasła). </expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C9</id>
+				<title>Edycja istniejącego klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case C4) oraz istnieje przypisany do niego klient
+
+Client ID: 40889
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;Edit customer&quot;</content><expected>Wyświetla się ekran &quot;Edit Customer Form&quot; wraz z formularzem do wpisania ID klienta</expected></step>
+<step>
+<index>3</index><content>Pole &quot;Customer Name&quot; nie jest edytowalne
+</content><expected>Dane wpisane w polu &quot;Customer Name&quot; są tylko do odczytu</expected></step>
+<step>
+<index>4</index><content>Pole &quot;Gender&quot; nie jest edytowalne</content><expected>Dane wpisane w polu &quot;Gender&quot; są tylko do odczytu</expected></step>
+<step>
+<index>5</index><content>Pole &quot;Date of birth&quot; nie jest edytowalne</content><expected>Dane wpisane w polu &quot;Date of brith&quot; są tylko do odczytu</expected></step>
+<step>
+<index>6</index><content>Dane w polu &quot;Address&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;Address&quot; wpisz adres klienta. 
+
+W tym polu nie są dozwolone znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. Maksymalna liczba znak&amp;oacute;w: 50</content><expected>Dane wpisane w polu &quot;Address&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>7</index><content>Dane w polu &quot;City&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;City&quot; wpisz adres klienta. 
+
+W tym polu nie są dozwolone znaki specjalne oraz cyfry. Pole to nie może być puste oraz zaczynać się od spacji. Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;City&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>8</index><content>Dane w polu &quot;State&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;State&quot; wpisz adres klienta. 
+
+
+W tym polu nie są dozwolone znaki specjalne oraz cyfry. Pole to nie może być puste oraz zaczynać się od spacji. Maksymalna liczba znak&amp;oacute;w: 25</content><expected>Dane wpisane w polu &quot;State&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>9</index><content>Dane w polu &quot;PIN&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;PIN&quot; wpisz adres klienta. 
+
+W tym polu nie są dozwolone litery oraz znaki specjalne. Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr oraz nie może zaczynać się od spacji. </content><expected>Dane wpisane w polu &quot;PIN&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>10</index><content>Dane w polu &quot;Mobile number&quot; są edytowalne. 
+Aby zmienić numer telefonu W polu &quot;Mobile number&quot; wpisz telefon klienta. 
+
+
+W tym polu nie są dozwolone litery oraz znaki specjalne. Pole to nie może być puste oraz musi mieć dokładnie 6 cyfr oraz nie może zaczynać się od spacji. Maksymalna liczba znak&amp;oacute;w: 15</content><expected>Dane wpisane w polu &quot;Phone number&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>11</index><content>Dane w polu &quot;E-mail&quot; są edytowalne. 
+Aby zmienić adres W polu &quot;E-mail&quot; adres email (w formacie tekst@nazwadomeny.roszerzenie)
+
+Pole to nie może być puste, zawierać spacji oraz adres email musi być poprawny. Maksymalna liczba znak&amp;oacute;w: 30. Zgodnie ze specyfikacją (F33) pole email musi być unikalne.</content><expected>Dane wpisane w polu &quot;Email&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>12</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się pop-up z informacją &quot;Changes made to Customer records&quot;</expected></step>
+<step>
+<index>13</index><content>Opcjonalnie, na pop-upie z potwierdzeniem zmiany danych wciśnik &quot;OK&quot; lub odczekaj około 10 sekund</content><expected>Wyświetla się ekran &quot;Edit Customer Form&quot; wraz z formularzem do wpisania ID klienta</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C6</id>
+				<title>Założenie konta dla klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case C4) oraz istnieje już klient w bazie przypisany do tego managera.
+
+Customer ID	40889
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;New Account&quot;</content><expected>Wyświetla się ekran &quot;Add new account form&quot; wraz z formularzem do wypełnienia danych</expected></step>
+<step>
+<index>3</index><content>W polu &quot;Customer ID&quot; wpisz ID utworzonego wcześniej klienta. 
+
+W tym polu nie są dozwolone cyfry, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. 
+
+
+</content><expected>Dane wpisane w polu &quot;Customer ID&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Account type&quot; wybierz rodzaj konta. Domyślnie zaznaczona jest opcja &quot;Savings&quot;</content><expected>Typ konta zaznaczony zgodnie z wyborem użytkownika.</expected></step>
+<step>
+<index>5</index><content>W polu &quot;Intial despoit&quot; wpisz kwotę depozytu. Zgodnie z wymaganiami (F31) kwota depozytu musi być r&amp;oacute;wna lub większa niż 500
+
+
+</content><expected>Dane wpisyane w polu &quot;Password&quot; są zamaskowane.</expected></step>
+<step>
+<index>6</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się ekran z potwierdzeniem założenia konta dla klienta oraz wpisanymi wcześniej danymi. 
+
+Utworzone account id: 124575
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C7</id>
+				<title>Wpłacenie depozytu na konto klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case C4) oraz istnieje już klient w bazie przypisany do tego managera. Klient posiada co najmniej 1 konto.
+
+
+Customer ID 40889
+Utworzone account id: 124575</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;Deposit&quot;</content><expected>Wyświetla się ekran &quot;Amount Deposit Form&quot; wraz z formularzem do wypełnienia danych</expected></step>
+<step>
+<index>3</index><content>W polu &quot;Account no&quot; wpisz imię oraz opcjonalnie nazwisko klienta. 
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. 
+
+Maksymalna liczba znak&amp;oacute;w: 10
+
+
+
+</content><expected>Dane wpisane w polu &quot;Account name&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Amount&quot; wpisz kwotę depozytu.
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. Dodatkwo, kwota powinna być większa niż 0. 
+
+Maksymalna liczba znak&amp;oacute;w: 8
+
+
+
+
+</content><expected>Dane wpisane w polu &quot;Amount&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>5</index><content>W polu &quot;Description &quot; wpisz tytuł depozytu. 
+
+Pole to nie może być puste. Maksymalna liczba znak&amp;oacute;w: 10
+
+</content><expected>Dane wpisane w polu &quot;Description&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>6</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się ekran z potwierdzeniem dokonania depozytu wraz z numerem transakcji (Transaction ID)</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C8</id>
+				<title>Wypłacenie środków z konto klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Użytkownik jest zalogowany do aplikacji Guru99 Bank jako manager (test case C4) oraz istnieje już klient w bazie przypisany do tego managera. Klient posiada co najmniej 1 konto na którym są zdeponowane środki pozwalające na wykonanie wypłaty. 
+
+
+Customer ID 40889
+Utworzone account id: 124575</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/manager/Managerhomepage.php</content><expected>Wyświetla się strona Guru99 Bank oraz wyświetla się Manager ID na ekranie powitalnym.</expected></step>
+<step>
+<index>2</index><content>Z menu po lewej stronie wybierz &quot;Withdrawal&quot;</content><expected>Wyświetla się ekran &quot;Amount Withdrawal Form&quot; wraz z formularzem do wypełnienia danych</expected></step>
+<step>
+<index>3</index><content>W polu &quot;Account no&quot; wpisz imię oraz opcjonalnie nazwisko klienta. 
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. 
+
+
+
+
+</content><expected>Dane wpisane w polu &quot;Account name&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Amount&quot; wpisz kwotę depozytu.
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste oraz zaczynać się od spacji. Dodatkowo, kwota musi być większa niż 0. 
+
+
+
+
+
+</content><expected>Dane wpisane w polu &quot;Amount&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>5</index><content>W polu &quot;Description &quot; wpisz tytuł depozytu. 
+
+Pole to nie może być puste. 
+
+</content><expected>Dane wpisane w polu &quot;Description&quot; są zwalidowane poprawnie. </expected></step>
+<step>
+<index>6</index><content>Jeśli wszystkie dane zostały zwalidowane poprawnie, naciśnij &quot;Submit&quot;</content><expected>Wyświetla się ekran z potwierdzeniem dokonania depozytu wraz z numerem transakcji (Transaction ID)</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>Rejestracja konta managera</name>
+		<description>Przypadki testowe powiązane z rejestracją konta managera</description>
+						<cases>
+												<case>
+				<id>C2</id>
+				<title>Dodanie konta managera</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik posiada zarejestrowany adres email</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W sekcji &quot;Steps To Generate Access&quot; kliknij &quot;here&quot;
+</content><expected>Strona Guru99 Bank z możliwością dodania usera wyświetla się poprawnie</expected></step>
+<step>
+<index>3</index><content>W polu email ID wpisz adres email (w formacie tekst@nazwadomeny.roszerzenie)</content><expected>Adres email zwalidowany poprawnie</expected></step>
+<step>
+<index>4</index><content>Kliknij &quot;Submit&quot;</content><expected>Jeśli adres email jest poprawny, wyświetlą się dane służące do logowania do konta administratora oraz informacja jak długo konto będzie ważne.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C4</id>
+				<title>Logowanie do konta managera</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik posiada login i hasło do aplikacji</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+Dane do logowania: 
+
+UserID: mngr516143
+Password: EhuzenE
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu managera oraz wyświetla się Manager ID na ekranie powitalnym. </expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C14</id>
+				<title>Zmiana hasła managera</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik (manager) posiada login i hasło do aplikacji
+
+
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu managera</expected></step>
+<step>
+<index>3</index><content>Z menu po lewej strony wybierz &quot;Change password&quot;</content><expected>Otwiera się strona z formularzem do zmiany hasła</expected></step>
+<step>
+<index>4</index><content>W polu &quot;Old Password&quot; wpisz obecne hasło
+
+Zgodnie z dokumentacją, pole to nie może być puste.</content><expected>Stare hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>5</index><content>W polu &quot;New Password&quot; wpisz nowe hasło
+
+Pole to nie może być puste, musi zawierać przynajmniej 1 cyfrę oraz 1 znak specjalny. 
+W dokumentacji (T101) wskazano także, że hasło powinno być &quot;trudne&quot; jednak nie wskazano konkretnych wymagań. </content><expected>Nowe hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>6</index><content>W polu &quot;Confirm New Password&quot; wpisz nowe hasło
+
+Pole to nie może być puste oraz wartość w polu &quot;Confirm New Password&quot; musi być taka sama jak w &quot;New Password&quot;</content><expected>Nowe hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>7</index><content>Jeśli pola zostały zweryfikowane poprawnie, wciśnij &quot;Submit&quot;</content><expected>Hasło zostało zmienione oraz pojawia się komunikat &quot;Password has been changed&quot;. Dodatkowo, użytkownik zostanie wylogowany i przekierowany do logowania. </expected></step>
+<step>
+<index>8</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password nowo ustawione hasło i naciśnij LOGIN</content><expected>Użytkownik został zalogowany do panelu managera</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>Logowanie oraz operacje jako klient</name>
+		<description>Przypadki testowe powiązane z kontem klienta</description>
+						<cases>
+												<case>
+				<id>C10</id>
+				<title>Logowanie do konta klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik (klient) posiada login i hasło do aplikacji
+
+
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+Dane do logowania: 
+
+CustomerID: 12122
+Password: Aga01$$
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu klienta banku </expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C11</id>
+				<title>Sprawdzenie salda konta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik (klient) posiada login i hasło do aplikacji. Oprócz tego, klient posiada co najmniej 1 konto.
+
+
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+Dane do logowania: 
+
+CustomerID: 12122
+Password: Aga01$$
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu klienta banku </expected></step>
+<step>
+<index>3</index><content>Z menu po lewej strony wybierz &quot;Balance Inquiry&quot;</content><expected>Wyświetla się strona z formularzem do wyboru konta. </expected></step>
+<step>
+<index>4</index><content>Z listy kont wybierz konto kt&amp;oacute;rego balans chcesz sprawdzić i kliknij &quot;Submit&quot;
+
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste.
+
+Na liście widnieją wszystkie konta kt&amp;oacute;re posiada klient
+
+</content><expected>Wyświetla się strona na kt&amp;oacute;rej widnieje balans wybranego konta.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C12</id>
+				<title>Przelew pomiędzy 2 rachunkami klienta - z poziomu managera</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik (klient) posiada login i hasło do aplikacji. Oprócz tego, klient posiada co najmniej 2 konta i na jednym z nich środki są większe niż 0.
+
+Konto 1: 124591 
+Konto 2: 124592
+
+
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+Dane do logowania: 
+
+CustomerID: 12122
+Password: Aga01$$
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu klienta banku </expected></step>
+<step>
+<index>3</index><content>Z menu po lewej strony wybierz &quot;Fund Transfer&quot;</content><expected>Wyświetla się strona z formularzem do wyboru konta. </expected></step>
+<step>
+<index>4</index><content>W polu &quot;Payers account no&quot; wpisz konto z kt&amp;oacute;rego zostaną pobrane środki.
+
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste.
+
+</content><expected>Numer konta zwalidowany pod kątem poprawności </expected></step>
+<step>
+<index>5</index><content>W polu &quot;Payees account no&quot; wpisz konto na kt&amp;oacute;re zostaną przelane środki.
+
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste.
+Numer konta musi być inny niż w &quot;payers account no&quot;. 
+
+</content><expected>Numer konta zwalidowany pod kątem poprawności </expected></step>
+<step>
+<index>6</index><content>W polu &quot;Amount&quot; wpisz kwotę przelewu.
+
+
+W tym polu nie są dozwolone litery, znaki specjalne. Pole to nie może być puste.
+
+</content><expected>Kwota przelewu zwalidowany pod kątem poprawności </expected></step>
+<step>
+<index>7</index><content>W polu &quot;Description&quot; wpisz opis przelewu.
+
+
+Pole to nie może być puste.
+
+
+</content><expected>Kwota przelewu zwalidowany pod kątem poprawności </expected></step>
+<step>
+<index>8</index><content>Jeśli dane są wpisane poprawnie, naciśnij &quot;SUBMIT&quot;</content><expected>Wyświetla się potwierdzenie przelewu.
+
+W nagł&amp;oacute;wku widnieje informacja &quot;Fund Transafer Details for Account No: (numer z kt&amp;oacute;rego był wykonywany przelew)&quot;
+
+Pod nagł&amp;oacute;wkiem jest tabelka z podsumowaniem transakcji:
+
+Transaction Id	
+Amount	
+FROM ACCOUNT NUMBER	
+TO ACCOUNT NUMBER	
+Description	
+
+</expected></step>
+<step>
+<index>9</index><content>Kliknij &quot;Continue&quot;</content><expected>Wyświetla się strona gł&amp;oacute;wna banku</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C13</id>
+				<title>Zmiana hasła klienta</title>
+												<template>Test Case (Steps)</template>
+																<type>Acceptance</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>Strona https://demo.guru99.com/V4/index.php działa oraz użytkownik (klient) posiada login i hasło do aplikacji
+
+
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>Otw&amp;oacute;rz stronę https://demo.guru99.com/V4/index.php</content><expected>Strona Guru99 Bank wyświetla się poprawnie</expected></step>
+<step>
+<index>2</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password hasło i naciśnij LOGIN
+
+Dane do logowania: 
+
+CustomerID: 12122
+Password: Aga01$$
+
+
+
+
+</content><expected>Użytkownik został zalogowany do panelu klienta banku </expected></step>
+<step>
+<index>3</index><content>Z menu po lewej strony wybierz &quot;Change password&quot;</content><expected>Otwiera się strona z formularzem do zmiany hasła</expected></step>
+<step>
+<index>4</index><content>W polu &quot;Old Password&quot; wpisz obecne hasło
+
+Pole to nie może być puste.</content><expected>Stare hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>5</index><content>W polu &quot;New Password&quot; wpisz nowe hasło
+
+Pole to nie może być puste, musi zawierać przynajmniej 1 cyfrę oraz 1 znak specjalny. 
+W dokumentacji (T101) wskazano także, że hasło powinno być &quot;trudne&quot; jednak nie wskazano konkretnych wymagań. </content><expected>Nowe hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>6</index><content>W polu &quot;Confirm New Password&quot; wpisz nowe hasło
+
+Pole to nie może być puste oraz wartość w polu &quot;Confirm New Password&quot; musi być taka sama jak w &quot;New Password&quot;</content><expected>Nowe hasło zostało wpisane i zwalidowane pod kątem poprawności</expected></step>
+<step>
+<index>7</index><content>Jeśli pola zostały zweryfikowane poprawnie, wciśnij &quot;Submit&quot;</content><expected>Hasło zostało zmienione oraz pojawia się komunikat &quot;Password has been changed&quot;. Dodatkowo, użytkownik zostanie wylogowany i przekierowany do logowania. </expected></step>
+<step>
+<index>8</index><content>W polu UserID wpisz nazwę użytkownika a w pole Password nowo ustawione hasło i naciśnij LOGIN
+
+</content><expected>Użytkownik został zalogowany do panelu klienta banku </expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+</suite>
